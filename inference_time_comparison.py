@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np 
 
 #CHANGE HERE
-f_time = open("/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Scissor_clc/framewise_time.txt","r") 
-dt_time = open("/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Scissor_clc/detect_track_time.txt","r")
+f_time = open("/framewise_time.txt","r")          #read the time needed for test scenario 1 (stored earlier after detection)
+dt_time = open("/detect_track_time.txt","r")      #read the time needed for test scenario 2 (stored earlier after detection)   
 
-framewise_time_cleaned = []
-detect_track_time_cleaned = [] 
+framewise_time_cleaned = []  #this list stores the time values which neglect the spurious readings for test scenario 1 
+detect_track_time_cleaned = [] #this list stores the time values which neglect the spurious readings for test sceario 2 
 
 #load framewise track times in a list 
-framewise_time = f_time.read().split()
+framewise_time = f_time.read().split() 
 framewise_time = [float(framewise_time[i]) for i in range(len(framewise_time))]
 #print(framewise_time)
 for i in range(len(framewise_time)):
@@ -30,6 +30,8 @@ print(len(detect_track_time_cleaned))
 #print(detect_track_time[1:])
 #print(np.max(int(np.max(framewise_time[1:])),int(np.max(detect_track_time[1:]))))
 
+
+#plot the readings and visualise the results
 
 plt.plot(np.linspace(0,100,len(framewise_time_cleaned)),framewise_time_cleaned[:],'--r',label='framewise detections')
 plt.plot(np.linspace(0,100,len(detect_track_time_cleaned)),detect_track_time_cleaned[:],'--b',label='detect and track')
