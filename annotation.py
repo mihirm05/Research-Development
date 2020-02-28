@@ -3,9 +3,9 @@
 
 import glob
 import sys 
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+#sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages') #to be used if ros and cv have conflict
 import cv2
-sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
+#sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
  
 # initialize the list of reference points and boolean indicating
@@ -13,7 +13,7 @@ sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
 refPt = []
 cropping = False
-path = '/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/'
+path = ''  #custom path to store the annotation (ground truths) 
 
 #CHANGE HERE
 ground_truth = open(path + "Scissor_oc/ground_truth.txt", 'w')
@@ -86,7 +86,7 @@ i = 0
 while i <= 100:
 	#CHANGE HERE
 	images = cv2.imread(path + "Scissor_oc/"+str(i)+".jpg")
-	#images = cv2.imread("/home/mihir/Desktop/R&D/Implementation_Practice/Videos_short/Scissor/mp.mp4")
+	#images = cv2.imread("mp.mp4")
 	#print('frame number is: ',i)
 	clone = images.copy()
 	cv2.namedWindow("image")
