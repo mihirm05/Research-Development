@@ -49,13 +49,13 @@ gBLy = []
 #gt values are in the format of xmin, ymax, ymin, xmax
 
 #CHANGE HERE 
-with open('/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Cup_om/framewise_coordinates.txt') as fp:
+with open('framewise_coordinates.txt') as fp:   #read the coordinates of detected objects in test case 1 
 	framewise_bb_values = [list(map(float, line.strip().split(' '))) for line in fp]
 
-with open('/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Cup_om/ground_truth.txt') as fp1:
+with open('ground_truth.txt') as fp1:           #read the coordinates of the ground truth 
 	ground_truth_values = [list(map(int, line.strip().split(' '))) for line in fp1]
 
-with open('/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Cup_om/detect_track_coordinates.txt') as fp2:
+with open('detect_track_coordinates.txt') as fp2:  #read the coordinates of detected objects in test case 2
 	detect_track_bb_values = [list(map(float, line.strip().split(' '))) for line in fp2]
 
 #print(framewise_bb_values)
@@ -69,8 +69,8 @@ with open('/home/mihir/Desktop/R&D/Implementation_Practice/FINAL TESTS/Cup_om/de
 #assume (x1,y1) to be Bottom left corneR
 
 #CHANGE HERE
-#100 for occlusion scenarios
-#otherwise 50
+#100 for occlusion scenarios   (since 100 frames have been annotated for the occlusion scenario) 
+#otherwise 50                  (since 50 frames have been annotated for other scenarios) 
 for i in range(100):
 	ftTLx.append(framewise_bb_values[i][0]) 	#(x1,y1))
 	ftTLy.append(framewise_bb_values[i][1])	
@@ -127,13 +127,13 @@ iou_f = []
 iou_c = [] 
 
 
-def calculate_iou_framewise(box_1, box_2):
+def calculate_iou_framewise(box_1, box_2):  #iou calculator for test case 1 
 	poly_1 = Polygon(box_1)
 	poly_2 = Polygon(box_2)
 	iou_f = poly_1.intersection(poly_2).area / poly_1.union(poly_2).area
 	return iou_f
 
-def calculate_iou_detect_track(box_3, box_2):
+def calculate_iou_detect_track(box_3, box_2):  #iou calculator for test case 2 
 	poly_3 = Polygon(box_3)
 	poly_2 = Polygon(box_2)
 	iou_c = poly_3.intersection(poly_2).area / poly_3.union(poly_2).area
@@ -162,6 +162,9 @@ for l in range(100):
 
 #print(iou_framewise)
 #print(iou_detect_track) 
+
+
+#plot the variation of iou for both the test cases with the ground truth and draw conclusions 
 
 plt.plot(np.linspace(0,100,100),iou_framewise,label='framewise',linestyle = '--',color='red')
 plt.plot(np.linspace(0,100,100),iou_detect_track,label='detect and track',linestyle = '--',color='blue')
