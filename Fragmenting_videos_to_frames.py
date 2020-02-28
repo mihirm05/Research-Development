@@ -1,12 +1,12 @@
 import sys 
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+#sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')    #this line is useful in cases when ros and cv have conflict
 import cv2
-sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
+#sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
-path = '/home/mihir/Desktop/'
+path = ' '  #add custom path 
 
-#CHANGE HERE
-vidcap = cv2.VideoCapture(path + 'mp.mp4') #Cup
+#CHANGE HERE   
+vidcap = cv2.VideoCapture(path + 'mp.mp4') #path to video file
 
 success,image = vidcap.read()
 count = 1
