@@ -1,6 +1,8 @@
 # Research-Development
 This repository contains the description of my Research &amp; Development project.<br> 
 
+The target of this project was to categorize the contemporary methods developed for object detection in videos and conduct a comparison and analyse whether the inclusion of temporal information has any benefits to the detection process or not. The comparison was conducted by implementing two methods namely: Framewise approach (object detection was conducted on every single frame of the input video) and Coupled approach (object detection was conducted on sparse frames and Open Loop Kalman Filter was applied on the remaining frames of the input video). 
+
 The repository has the following structure: <br>
 (i) contemporary research papers  <br> 
 - per frame methodologies <br> 
