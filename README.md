@@ -26,9 +26,9 @@ The repository has the following structure: <br>
 
 **(iv) src** <br> 
 - annotation.py: script to annotate the video inputs and generate annotated frames <br> 
-- coupled_dt_28_11_2019.ipynb: pipeline implementing Coupled approach <br> 
+- coupled_dt_mobile.ipynb: pipeline implementing Coupled approach <br> 
 - Fragmenting_videos_to_frames.py: decomposing video inputs to constituent frames <br> 
-- framewise_28_11_2019.ipynb: pipeline implementing Framewise approach <br> 
+- framewise_mobile.ipynb: pipeline implementing Framewise approach <br> 
 - inference_time_comparison.py: script to compare the inference times for both approach and generate a plot 
 - iou_calculator.py: script to compare the IoU for both approaches with ground truth and generate a plot 
 - object_detection_tutorial_video_webcam.py: test webcam working with tensorflow api 
