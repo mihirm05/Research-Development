@@ -2,16 +2,24 @@ import sys
 #sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')    #this line is useful in cases when ros and cv have conflict
 import cv2
 #sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
+import argparse
 
-path = ' '  #add custom path 
+parser = argparse.ArgumentParser(description="Converting videos to images")
 
-#CHANGE HERE   
+parser.add_argument("--video_path", type=str, help="Add path to the video file")
+ 
+args = parser.parse_args()
+
+path = args.video_path  #add custom path
+
 vidcap = cv2.VideoCapture(path + 'mp.mp4') #path to video file
 
-success,image = vidcap.read()
+ret, image = vidcap.read()
+
 count = 1
-while success:
-	#CHANGE HERE 
+
+while ret:
+	 
 	cv2.imwrite(path + 'Cup/%d.jpg' % count, image)     # save frame as JPEG file      
 
 	success,image = vidcap.read()
